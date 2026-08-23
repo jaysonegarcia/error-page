@@ -1,0 +1,12 @@
+{
+    "name": "jaysonegarcia/error-page",
+    "description": "Replaces the default WordPress critical error screen with a branded 500 page. Colours, spacing and type are exposed as CSS custom properties so the same plugin can be re-themed on every site without touching PHP.",
+    "homepage": "https://github.com/jaysonegarcia/error-page",
+    "type": "wordpress-plugin",
+    "require": {
+        "php": ">=7.4"
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}

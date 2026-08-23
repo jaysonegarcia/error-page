@@ -1,0 +1,170 @@
+/*
+ * Error Page
+ *
+ * Every value below is a custom property. To re-theme this page on another site,
+ * override the tokens in `:root` — do not edit the rules underneath.
+ *
+ * Override order (later wins):
+ *   1. this file
+ *   2. <child theme>/error-page.css, <parent theme>/error-page.css,
+ *      or wp-content/error-page.css
+ *   3. the colour fields on Settings → Error Page
+ */
+
+:root {
+    /* Surface */
+    --error-bg: #e9e9e9;
+    --error-card-bg: #ffffff;
+    --error-card-max-width: 834px;
+    --error-card-radius: 0;
+    --error-card-shadow: none;
+    --error-card-padding-block: clamp(48px, 8vw, 100px);
+    --error-card-padding-inline: clamp(24px, 12vw, 200px);
+    --error-gap: 30px;
+    --error-page-padding: 24px;
+
+    /* Type */
+    --error-font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif;
+    --error-text-color: #000000;
+    --error-accent: #e10600;
+
+    --error-code-size: clamp(48px, 10vw, 64px);
+    --error-code-weight: 700;
+    --error-code-line-height: 1.2;
+    --error-code-letter-spacing: normal;
+
+    --error-title-size: clamp(20px, 4vw, 24px);
+    --error-title-weight: 700;
+    --error-title-line-height: 1.2;
+
+    --error-message-size: clamp(16px, 3vw, 20px);
+    --error-message-weight: 400;
+    --error-message-line-height: 1.3;
+    --error-message-max-width: 434px;
+
+    /* Illustration */
+    --error-icon-width: 136.792px;
+    --error-icon-aspect: 136.792 / 81.8132;
+
+    /* Admin-only detail block */
+    --error-details-bg: #f6f6f6;
+    --error-details-border: #d5d5d5;
+    --error-details-color: #3c3c3c;
+    --error-details-font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --error-details-size: 13px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body.error-page {
+    margin: 0;
+    padding: var(--error-page-padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: var(--error-bg);
+    color: var(--error-text-color);
+    font-family: var(--error-font-family);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.error-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--error-gap);
+    width: 100%;
+    max-width: var(--error-card-max-width);
+    padding: var(--error-card-padding-block) var(--error-card-padding-inline);
+    background: var(--error-card-bg);
+    border-radius: var(--error-card-radius);
+    box-shadow: var(--error-card-shadow);
+    text-align: center;
+}
+
+.error-icon {
+    width: min(var(--error-icon-width), 100%);
+    aspect-ratio: var(--error-icon-aspect);
+    flex-shrink: 0;
+    line-height: 0;
+}
+
+.error-icon svg,
+.error-icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.error-heading {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+}
+
+.error-code {
+    margin: 0;
+    font-size: var(--error-code-size);
+    font-weight: var(--error-code-weight);
+    line-height: var(--error-code-line-height);
+    letter-spacing: var(--error-code-letter-spacing);
+}
+
+.error-title {
+    margin: 0;
+    font-size: var(--error-title-size);
+    font-weight: var(--error-title-weight);
+    line-height: var(--error-title-line-height);
+}
+
+.error-message {
+    max-width: var(--error-message-max-width);
+    margin: 0;
+    font-size: var(--error-message-size);
+    font-weight: var(--error-message-weight);
+    line-height: var(--error-message-line-height);
+    word-break: break-word;
+}
+
+.error-message a {
+    color: inherit;
+}
+
+/* Shown only to administrators when WP_DEBUG is on. */
+.error-details {
+    width: 100%;
+    max-width: var(--error-message-max-width);
+    padding: 12px 16px;
+    border: 1px solid var(--error-details-border);
+    border-radius: 4px;
+    background: var(--error-details-bg);
+    color: var(--error-details-color);
+    font-family: var(--error-details-font-family);
+    font-size: var(--error-details-size);
+    text-align: left;
+}
+
+.error-details summary {
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.error-details pre {
+    margin: 12px 0 0;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
